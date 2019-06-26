@@ -1,54 +1,38 @@
-import React, { Component } from 'react'
-import { Input, Button, List} from 'antd';
-import './style.js'
-import { TodoListWrap, TodoIputWrap} from './style';
-import store from '@/store';
-import { getFetchTodoListAction } from './store/actionCreates'
+import { connect }  from 'react-redux'
+import TodoListUi from "./ui";
+import { getTodo, getinputVal, getFetchTodoListAction } from './store/actionCreates'
 
-
-export default class TodoList extends Component {
-  constructor(props) {
-    super(props);
-    this.state ={
-      inputVal: store.getState().todo.inputVal,
-      todoList: store.getState().todo.todoList
-    };
-    store.subscribe (() => {
-      this.setState({
-        inputVal: store.getState().todo.inputVal,
-        todoList: store.getState().todo.todoList
-      })
-    })
-  }
-
-  render() {
-    let {todoList} = this.state;
-    return (
-      <TodoListWrap>
-        <TodoIputWrap>
-          <Input />
-          <Button type="primary">ADD</Button>
-        </TodoIputWrap>
-        <List dataSource={ todoList } renderItem={item => {
-          return <List.Item key={item.id}>{ item.name }</List.Item>
-        }}/>
-      </TodoListWrap>
-    )
-  }
-
-  componentDidMount () {
-    // let action = {
-    //   type:'fetchTodoList'
-    // }
-    // store.dispatch(action);
-    store.dispatch(getFetchTodoListAction());
-      // store.dispatch(getInitTodoListAction);
-      // fetch('http://localhost:3001/todoList')
-      // .then(response => response.json())
-      // .then(res => {
-      //   // store.dispatch(getInitTodoListAction(res));
-      //   store.dispatch(getInitTodoListAction(res));
-      // });
+/**
+ *
+ * @param {Obejct} state
+ */
+const mapStateToProps = ({ todo }) => {
+  // console.log(todo);
+  return {
+    todoList: todo.todoList,
+    inputVal: todo.inputVal
   }
 }
+/**
+ *
+ * @param {Function} dispatch
+ */
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onClick () {
+      dispatch(getTodo())
+    },
 
+    onInputChange (event) {
+      let value = event.target.value;
+      // console.log(value);
+      dispatch(getinputVal(value))
+    },
+
+    getInitTodoList() {
+      dispatch(getFetchTodoListAction())
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoListUi);

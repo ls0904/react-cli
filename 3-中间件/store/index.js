@@ -1,7 +1,7 @@
 import {createStore, combineReducers, applyMiddleware,compose}  from 'redux';
 import todoReducer from '../views/TodoList/store/reducer';
 // logger thunk 就是一个中间件
-// import logger from 'redux-logger';
+import logger from 'redux-logger';
 // 1、引入createSagaMiddleware
 import createSagaMiddleware from 'redux-saga';
 
