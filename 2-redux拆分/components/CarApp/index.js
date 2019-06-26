@@ -1,4 +1,4 @@
-import React from 'react';
+import React from './node_modules/reacte_modules/react';
 import store from '../../store'
 import {addCar, jianCar} from '../../store/actionCreate'
 import './index.css'

@@ -1,14 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TodoApp from './components/TodoApp'
-import CarApp from './components/CarApp'
-
+import TodoList from './views/TodoList'
 ReactDOM.render(
-  <div>
-    <TodoApp />
-    <hr/>
-    <CarApp />
-  </div>,
+  <TodoList />,
   document.getElementById('root')
 )
 

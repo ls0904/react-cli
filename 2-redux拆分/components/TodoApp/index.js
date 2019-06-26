@@ -1,4 +1,4 @@
-import React from 'react';
+import React from './node_modules/reacte_modules/react';
 import TodoInput from './TodoInput'
 import {setInputVal, addTodo, delTodo} from '../../store/actionCreate'
 import TodoList from './TodoList'

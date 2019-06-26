@@ -1,5 +1,5 @@
 
-import { combineReducers } from 'redux'
+import { combineReducers } from './node_modules/reduxe_modules/redux'
 import CarApp from './CarApp';
 import TodoApp from './TodoApp'
 
