@@ -14,13 +14,11 @@ const Hello2 = withRouter(Hello);
 
 export default class Detail extends Component {
   render() {
-    let { match:{ params:{ id } } } = this.props;
+    let { match:{ params:{ id } }} = this.props;
     return (
 
       <div>
         详情页面  ----{ id }
-        {/* <Hello { ...this.props }/> */}
-        {/* <Hello { ...this.props }/> */}
         <Hello2 />
       </div>
     )
